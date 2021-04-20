@@ -32,39 +32,53 @@ export default function RegistrationForm({ register, setIsRegistered }) {
 
     return (
         <div className="text-primary m-6">
-            <h1 className="text-1xl font-medium text-primary mt-4 mb-12 text-center">REGISTRATION FORM</h1>
+            <h1 className="text-2xl font-medium text-primary mt-4 mb-2">Sign Up for an account</h1>
             <form onSubmit={handleSubmit}>
-                <label>Username:</label>
+                <label className="text-left">Username:</label>
                 <input
                     name="name"
                     type="text"
                     value={formData.user.name}
                     onChange={handleChange}
+                    placeholder="username"
+                    className={"w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"}
                 />
-                <label>Password:</label>
+                <label className="text-left">Password:</label>
                 <input
                     name="password"
                     type="password"
                     value={formData.user.password}
                     onChange={handleChange}
+                    placeholder="password"
+                    className={"w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"}
                 />
-                <label>Age:</label>
+                <label className="text-left">Age:</label>
                 <input
                     name="age"
                     type="number"
                     value={formData.user.age}
                     onChange={handleChange}
+                    placeholder={`#`}
+                    className={"w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"}
                 />
-                <label>Email:</label>
+                <label className="text-left">Email:</label>
                 <input
                     name="email"
                     type="text"
                     value={formData.user.email}
                     onChange={handleChange}
+                    placeholder={`name@company.com`}
+                    className={"w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"}
                 />
-                <input type="submit" value="Register" />
+                <div className="flex items-center mt-3">
+                    <button 
+                        className={"bg-blue-700 hover:bg-blue-500 py-2 px-4 text-md text-white rounded border border-blue focus:outline-none focus:border-black"}
+                        value="Register"> 
+                            Submit 
+                    </button> 
+                </div>
             </form> 
-            <button onClick={handleClick}>Already registered? Login.</button>
+            <button className={"text-blue-500 hover:underline"} onClick={handleClick}onClick={handleClick}>Already registered? Login.</button>
         </div>
     )
 }
