@@ -31,8 +31,8 @@ export default function RegistrationForm({ register, setIsRegistered }) {
     }
 
     return (
-        <div>
-            <h1>REGISTRATION FORM</h1>
+        <div className="text-primary m-6">
+            <h1 className="text-1xl font-medium text-primary mt-4 mb-12 text-center">REGISTRATION FORM</h1>
             <form onSubmit={handleSubmit}>
                 <label>Username:</label>
                 <input
