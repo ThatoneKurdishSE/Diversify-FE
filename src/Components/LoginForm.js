@@ -22,7 +22,7 @@ export default function LoginForm({ login, setIsRegistered }) {
 
     return (
         <div className="text-primary m-6">
-            <h1 className="text-1xl font-medium text-primary mt-4 mb-12 text-center">Login to your account</h1>
+            <h1 className="text-2xl font-medium text-primary mt-4 mb-2">Login to your account</h1>
             <form onSubmit={handleSubmit}>
                 <label className="text-left">Username:</label>
                 <input
