@@ -1,20 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import LoginForm from './LoginForm';
+import RegistrationForm from './RegistrationForm';
 
-export default function Login({ login }) {
+export default function Login({ login, register }) {
 
-    const [formData, setFormData] = useState({name: "", password: ""})
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        login(formData)
-    }
+    const [isRegistered, setIsRegistered] = useState(true)
 
     return (
         <figure className="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
@@ -24,23 +14,7 @@ export default function Login({ login }) {
                 <p className="text-lg font-semibold" >Welcome to Diversify</p>
             </blockquote>
             </div> 
-            <form onSubmit={handleSubmit}>
-                <label>Username:</label>
-                <input
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                />
-                <label>Password:</label>
-                <input
-                    name="password"
-                    type="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-                <input type="submit" value="Login" />
-            </form>
+            {isRegistered ? <LoginForm login={login} setIsRegistered={setIsRegistered} /> : <RegistrationForm register={register} setIsRegistered={setIsRegistered} />}
         </figure>
     )
 }
