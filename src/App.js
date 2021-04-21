@@ -4,6 +4,7 @@ import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
 import NavBar from './Components/NavBar';
 import {Route, Switch, withRouter} from 'react-router-dom'
+import Header from "./Components/Header";
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <NavBar />
       <Switch>
         
