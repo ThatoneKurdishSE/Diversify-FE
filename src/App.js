@@ -1,7 +1,7 @@
 // import './App.css';
 import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
-import MainPage from "./Components/MainPage";
+import MainPage from "./Containers/MainPage";
 import NavBar from './Components/NavBar';
 import {Route, Switch, withRouter} from 'react-router-dom'
 
