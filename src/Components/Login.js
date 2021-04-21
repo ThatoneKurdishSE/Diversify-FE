@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
 
-export default function Login({ login, register }) {
+export default function Login(props) {
   const [isRegistered, setIsRegistered] = useState(true);
 
   return (
@@ -11,11 +12,12 @@ export default function Login({ login, register }) {
         <blockquote className="text-2xl font-medium text-center">
           <p className="text-lg font-semibold">Welcome to Diversify</p>
         </blockquote>
+        {props.isLoggedIn ? <Redirect to="/user" /> : null}
         {isRegistered ? (
-          <LoginForm login={login} setIsRegistered={setIsRegistered} />
+          <LoginForm {...props} setIsRegistered={setIsRegistered} />
         ) : (
           <RegistrationForm
-            register={register}
+            {...props}
             setIsRegistered={setIsRegistered}
           />
         )}

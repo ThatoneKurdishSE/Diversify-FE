@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-export default function LoginForm({ login, setIsRegistered }) {
-  const [formData, setFormData] = useState({ name: "", password: "" });
+export default function LoginForm({ login, setIsRegistered, history }) {
+  const [formData, setFormData] = useState({ 
+    user: {
+      username: "", 
+      password: "" 
+    },
+  });
 
   useEffect(() => {
     localStorage.removeItem('token')
@@ -9,14 +14,16 @@ export default function LoginForm({ login, setIsRegistered }) {
 
   const handleChange = (e) => {
     setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+      user: {
+        ...formData.user,
+        [e.target.name]: e.target.value,
+      },
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(formData);
+    login(formData, history);
   };
 
   const handleClick = () => {
@@ -33,9 +40,9 @@ export default function LoginForm({ login, setIsRegistered }) {
       <form onSubmit={handleSubmit}>
         <label className="text-left">Username:</label>
         <input
-          name="name"
+          name="username"
           type="text"
-          value={formData.name}
+          value={formData.user.username}
           onChange={handleChange}
           placeholder="Username"
           className={
@@ -46,7 +53,7 @@ export default function LoginForm({ login, setIsRegistered }) {
         <input
           name="password"
           type="password"
-          value={formData.password}
+          value={formData.user.password}
           onChange={handleChange}
           placeholder="Password"
           className={
