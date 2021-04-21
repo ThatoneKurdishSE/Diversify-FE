@@ -33,13 +33,11 @@ function App() {
         .then((response) => response.json())
         .then((data) => console.log(data));
       setIsLoggedIn(true);
-      console.log(isLoggedIn);
     }
   }, []);
 
   return (
     <div className="App">
-      <div className="text-red-900">Hello</div>
       {isLoggedIn ? <h1>You're logged in.</h1> : <Login login={login} />}
     </div>
   );
