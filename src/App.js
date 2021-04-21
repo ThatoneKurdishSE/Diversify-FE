@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
 import NavBar from './Components/NavBar';
-import {Route, Switch, withRouter} from 'react-router-dom'
+import PrivateRoute from './Components/PrivateRoute'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  const login = (user) => {
+  const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
       method: "POST",
       headers: {
@@ -40,11 +41,12 @@ function App() {
       body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then((data) => localStorage.setItem("token", data.token));
-      setIsLoggedIn(true)
+      .then((data) => localStorage.setItem("token", data.token))
+      .then(() => setIsLoggedIn(true))
+      .then(() => history.push("/user"));
   };
 
-  const register = (user) => {
+  const register = (user, history) => {
     fetch(`${baseUrl}/users`, {
       method: 'POST',
       headers: {
@@ -57,17 +59,26 @@ function App() {
         response.json()
         console.log(response)
       })
+      .then(() => history.push("/"))
   }
-  console.log(communities)
+
+  const logout = () => {
+    localStorage.clear()
+    setIsLoggedIn(false)
+  }
 
   return (
-    <div className="App">
-      <NavBar />
-      <Switch>
-        
-      </Switch>
-      {isLoggedIn ? <MainPage communities={communities}/> : <Login login={login} register={register} />}
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path="/" render={(props) => <Login {...props} login={login} register={register} isLoggedIn={isLoggedIn} />} />
+          <PrivateRoute>
+            <MainPage communities={communities}/>
+          </PrivateRoute>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
