@@ -9,6 +9,7 @@ import Header from "./Components/Header";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [communities, setCommunities] = useState([])
 
   const baseUrl = "http://localhost:3000";
 
@@ -22,9 +23,10 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          setIsLoggedIn(true);
-        });
+          console.log(data)
+          setCommunities(data)
+        } );
+      setIsLoggedIn(true);
     }
   }, [isLoggedIn]);
 
@@ -87,7 +89,7 @@ function App() {
             )}
           />
           <PrivateRoute>
-            <MainPage />
+            <MainPage communities={communities}/>
           </PrivateRoute>
         </Switch>
       </div>
