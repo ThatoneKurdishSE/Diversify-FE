@@ -58,8 +58,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <NavBar />
+      <Header status={isLoggedIn} />
+      {/* <NavBar /> */}
       <Switch>
         
       </Switch>
