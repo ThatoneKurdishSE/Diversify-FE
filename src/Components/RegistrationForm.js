@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export default function RegistrationForm({ register, setIsRegistered }) {
+export default function RegistrationForm({ register, setIsRegistered, history }) {
   const [formData, setFormData] = useState({
     user: {
-      name: "",
+      username: "",
       password: "",
       age: "",
       email: "",
@@ -21,7 +21,7 @@ export default function RegistrationForm({ register, setIsRegistered }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    register(formData);
+    register(formData, history);
     setIsRegistered(true);
   };
 
@@ -39,9 +39,9 @@ export default function RegistrationForm({ register, setIsRegistered }) {
       <form onSubmit={handleSubmit}>
         <label className="text-left">Username:</label>
         <input
-          name="name"
+          name="username"
           type="text"
-          value={formData.user.name}
+          value={formData.user.username}
           onChange={handleChange}
           placeholder="Username"
           className={
@@ -95,7 +95,6 @@ export default function RegistrationForm({ register, setIsRegistered }) {
       <div className="flex items-center mt-3 justify-center">
         <button
           className={"text-blue-500 hover:underline"}
-          onClick={handleClick}
           onClick={handleClick}
         >
           Already registered? Login.
