@@ -25,9 +25,8 @@ function App() {
         .then((data) => {
           console.log(data)
           setCommunities(data)
-        } );
-      setIsLoggedIn(true);
-    }
+        });
+      }
   }, [isLoggedIn]);
 
   const login = (user, history) => {
@@ -43,7 +42,7 @@ function App() {
       .then((data) => {
         if(data.token !== undefined) {
           localStorage.setItem("token", data.token)
-          // setIsLoggedIn(true)
+          setIsLoggedIn(true)
         }
       })
       .then(() => history.push("/user"))
@@ -73,7 +72,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header logout={logout}/>
         {/* <NavBar /> */}
         <Switch>
           <Route

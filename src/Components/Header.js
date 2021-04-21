@@ -2,8 +2,11 @@ import React from "react";
 import SearchBar from "material-ui-search-bar";
 import { Link } from 'react-router-dom'
 
-export default function Header( ) {
+export default function Header({ logout }) {
 
+  const handleClick = () => {
+    logout();
+  }
 
   return (
     <nav class="flex items-center justify-between flex-wrap bg-teal p-6">
@@ -31,7 +34,8 @@ export default function Header( ) {
           />
         </div>
         <div>
-          <Link to="/">Logout</Link>
+          <button onClick={handleClick}>Logout</button>
+          {/* <Link to="/">Logout</Link> */}
         </div>
       </div>
     </nav>
