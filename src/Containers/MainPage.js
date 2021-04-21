@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import SideBar from './SideBar';
+import NavBar from '../Components/NavBar'
 
 export default function MainPage({communities}) {
     return (
-            <div className="md:flex flex-col md:flex-row md:min-h-screen w-full pl-5 pt-3">
+            <div className="md:flex flex-col md:flex-row md:min-h-screen md:min-w-screen pl-5 pt-3">
                 <SideBar communities={communities}/>
-                <h1 className="">You're logged in.</h1>
+                <container className="flex flex-col w-full md:w-9/12 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 border-solid border-4 border-red-200 ml-2" >
+                    <NavBar />
+                    You're logged in.
+                </container>
             </div>
     )
 }
