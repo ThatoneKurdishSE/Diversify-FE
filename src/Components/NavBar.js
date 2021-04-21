@@ -33,7 +33,7 @@ export default function Navbar({ status }) {
                 </a>
               </li>
               </ul>
-            ) : (
+            : (
               <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
                 <li className="nav-item">
                   <a

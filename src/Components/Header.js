@@ -31,7 +31,7 @@ export default function Header( ) {
           />
         </div>
         <div>
-          <Link to="/login">Logout</Link>
+          <Link to="/">Logout</Link>
         </div>
       </div>
     </nav>
