@@ -96,7 +96,6 @@ export default function RegistrationForm({ register, setIsRegistered }) {
         <button
           className={"text-blue-500 hover:underline"}
           onClick={handleClick}
-          onClick={handleClick}
         >
           Already registered? Login.
         </button>
