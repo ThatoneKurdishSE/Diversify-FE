@@ -1,45 +1,25 @@
 import React, { useState } from "react";
+import LoginForm from "./LoginForm";
+import RegistrationForm from "./RegistrationForm";
 
-export default function Login({ login }) {
-const [formData, setFormData] = useState({ name: "", password: "" });
+export default function Login({ login, register }) {
+  const [isRegistered, setIsRegistered] = useState(true);
 
-const handleChange = (e) => {
-  setFormData({
-    ...formData,
-    [e.target.name]: e.target.value,
-  });
-};
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  login(formData);
-};
-
-return (
-  <figure className="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
-    <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
-      <h3> Login </h3>
-      <blockquote>
-        <p className="text-lg font-semibold">Welcome to Diversify</p>
-      </blockquote>
-    </div>
-    <form onSubmit={handleSubmit}>
-      <label>Username:</label>
-      <input
-        name="name"
-        type="text"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <label>Password:</label>
-      <input
-        name="password"
-        type="password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-      <input type="submit" value="Login" />
-    </form>
-  </figure>
-);
+  return (
+    <figure className="h-screen flex bg-gray-100">
+      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-1">
+        <blockquote className="text-2xl font-medium text-center">
+          <p className="text-lg font-semibold">Welcome to Diversify</p>
+        </blockquote>
+        {isRegistered ? (
+          <LoginForm login={login} setIsRegistered={setIsRegistered} />
+        ) : (
+          <RegistrationForm
+            register={register}
+            setIsRegistered={setIsRegistered}
+          />
+        )}
+      </div>
+    </figure>
+  );
 }
