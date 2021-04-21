@@ -8,6 +8,7 @@ import {Route, Switch, withRouter} from 'react-router-dom'
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [communities, setCommunities] = useState([])
 
   const baseUrl = "http://localhost:3000";
 
@@ -20,7 +21,10 @@ function App() {
         },
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          console.log(data)
+          setCommunities(data)
+        } );
       setIsLoggedIn(true);
       console.log(isLoggedIn);
     }
@@ -54,6 +58,7 @@ function App() {
         console.log(response)
       })
   }
+  console.log(communities)
 
   return (
     <div className="App">
@@ -61,7 +66,7 @@ function App() {
       <Switch>
         
       </Switch>
-      {isLoggedIn ? <MainPage /> : <Login login={login} register={register} />}
+      {isLoggedIn ? <MainPage communities={communities}/> : <Login login={login} register={register} />}
     </div>
   );
 }
