@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function LoginForm({ login, setIsRegistered, history }) {
   const [formData, setFormData] = useState({ 
@@ -7,6 +7,10 @@ export default function LoginForm({ login, setIsRegistered, history }) {
       password: "" 
     },
   });
+
+  useEffect(() => {
+    localStorage.removeItem('token')
+  }, [])
 
   const handleChange = (e) => {
     setFormData({
