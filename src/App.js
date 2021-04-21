@@ -1,6 +1,8 @@
 // import './App.css';
 import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
+import NavBar from './Components/NavBar';
+import {Route, Switch, withRouter} from 'react-router-dom'
 
 function App() {
 
@@ -54,6 +56,10 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
+      <Switch>
+
+      </Switch>
       {isLoggedIn ? <h1>You're logged in.</h1> : <Login login={login} register={register} />}
     </div>
   );
