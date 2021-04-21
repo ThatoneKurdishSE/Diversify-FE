@@ -1,6 +1,7 @@
 // import './App.css';
 import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
+import MainPage from "./Components/MainPage";
 
 function App() {
 
@@ -54,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      {isLoggedIn ? <h1>You're logged in.</h1> : <Login login={login} register={register} />}
+      {isLoggedIn ? <MainPage /> : <Login login={login} register={register} />}
     </div>
   );
 }
