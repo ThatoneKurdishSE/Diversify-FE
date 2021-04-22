@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ChatBox() {
+export default function ChatBox( {community, currentUser} ) {
 
     const [formData, setFormData] = useState({
         title: "",
@@ -13,6 +13,8 @@ export default function ChatBox() {
     const handleChange = (event) => {
         setFormData({
             ...formData,
+            user_id: currentUser.id,
+            community_id: community.id,
             [event.target.name]: event.target.value
         })
     }

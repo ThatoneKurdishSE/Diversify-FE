@@ -9,13 +9,14 @@ import Header from "./Components/Header";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [communities, setCommunities] = useState([])
+  const [currentUserCommunities, setCurrentUserCommunities] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
 
   const baseUrl = "http://localhost:3000";
 
   useEffect(() => {
     if (localStorage.token !== undefined) {
-      fetch(`${baseUrl}/communities`, {
+      fetch(`${baseUrl}/profile`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.token}`,
@@ -24,7 +25,8 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
-          setCommunities(data)
+          setCurrentUserCommunities(data.communities)
+          setCurrentUser(data)
         });
       }
   }, [isLoggedIn]);
@@ -88,7 +90,7 @@ function App() {
             )}
           />
           <PrivateRoute>
-            <MainPage communities={communities}/>
+            <MainPage currentUserCommunities={currentUserCommunities} currentUser={currentUser} />
           </PrivateRoute>
         </Switch>
       </div>
