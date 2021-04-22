@@ -4,7 +4,7 @@ import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
 import NavBar from "./Components/NavBar";
 import PrivateRoute from "./Components/PrivateRoute";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./Components/Header";
 
 function App() {
@@ -69,6 +69,7 @@ function App() {
   const logout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
+    <Redirect to="/" />
   };
 
   return (
