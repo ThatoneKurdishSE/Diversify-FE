@@ -88,7 +88,7 @@ function App() {
             )}
           />
           <PrivateRoute>
-            <MainPage communities={communities}/>
+            <MainPage communities={communities} setCommunities={setCommunities}/>
           </PrivateRoute>
         </Switch>
       </div>
