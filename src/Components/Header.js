@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Header({ logout }) {
 
   const handleClick = () => {
+    console.log("hit")
     logout();
   }
 
