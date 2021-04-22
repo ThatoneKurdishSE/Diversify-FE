@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
-import NavBar from "./Components/NavBar";
 import PrivateRoute from "./Components/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./Components/Header";
@@ -76,7 +75,6 @@ function App() {
     <Router>
       <div className="App">
         <Header logout={logout}/>
-        {/* <NavBar /> */}
         <Switch>
           <Route
             exact

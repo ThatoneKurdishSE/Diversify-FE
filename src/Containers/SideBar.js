@@ -1,13 +1,23 @@
 import React, {useState} from 'react'
 import CommunitiesListItem from '../Components/CommunitiesListItem'
 
-export default function SideBar({userCommunities, setUserCommunities, setCommunity}) {
+export default function SideBar({userCommunities, communities, setUserCommunities, setCommunity}) {
     const [isToggled, setIsToggled] = useState(false)
-    let communityList = userCommunities.map(community => <CommunitiesListItem key={community.id} community={community} setCommunity={setCommunity}/>)
+
+    let communityList = communities.map(community => <CommunitiesListItem key={community.id} community={community} setCommunity={setCommunity}/>)
+    let myCommunityList = () => {
+        if (userCommunities.length = 0) return userCommunities
+        else return (
+            userCommunities.map(community => <CommunitiesListItem key={community.id} community={community} setCommunity={setCommunity}/>)
+            )
+    }
+
     let toggle = (e) => {
         e.preventDefault()
         setIsToggled(!isToggled)
     }
+    console.log(userCommunities)
+
     return (
         <div className="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 border-solid border-4 border-green-200">
             <div className="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-center">
@@ -17,7 +27,11 @@ export default function SideBar({userCommunities, setUserCommunities, setCommuni
                     { isToggled ? "My Communities" : "Communities" }
                 </a>
             </div>
-            {communityList}
+            { isToggled? 
+             (myCommunityList)
+            : 
+            (communityList)
+            }
         </div>
     )
 }
