@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import CommunitiesListItem from '../Components/CommunitiesListItem'
 
-export default function SideBar({communities, setCommunities, setCommunity}) {
+export default function SideBar({userCommunities, setUserCommunities, setCommunity}) {
     const [isToggled, setIsToggled] = useState(false)
-    let communityList = communities.map(community => <CommunitiesListItem key={community.id} community={community} setCommunity={setCommunity}/>)
+    let communityList = userCommunities.map(community => <CommunitiesListItem key={community.id} community={community} setCommunity={setCommunity}/>)
     let toggle = (e) => {
         e.preventDefault()
         setIsToggled(!isToggled)
