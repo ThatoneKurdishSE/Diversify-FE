@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Navbar({ }) {
+export default function Navbar({community}) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -11,7 +11,7 @@ export default function Navbar({ }) {
               className="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"
               href="/"
             >
-              Diversify
+              {community === null ? `Diversify` : `${community.name}`}
             </a>
           </div>
           <div
@@ -36,7 +36,7 @@ export default function Navbar({ }) {
                 <li className="nav-item">
                   <a
                     className="px-3 py-2 flex items-center text-xs font-bold leading-snug hover:opacity-75"
-                    href="login"
+                    href="#"
                   >
                     <span className="ml-2">Login</span>
                   </a>
