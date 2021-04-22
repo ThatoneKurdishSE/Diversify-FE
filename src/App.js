@@ -12,7 +12,8 @@ function App() {
   const [communities, setCommunities] = useState([])
   const [userCommunities, setUserCommunities] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
-  const [location, setLocation] = useState()
+  const [location, setLocation] = useState();
+  const [posts, setPosts] = useState([]);
 
   const baseUrl = "http://localhost:3000";
 
@@ -26,9 +27,23 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           setUserCommunities(data.communities)
           setCurrentUser(data)
+        });
+      }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (localStorage.token !== undefined) {
+      fetch(`${baseUrl}/posts`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setPosts(data)
         });
       }
   }, [isLoggedIn]);
@@ -51,7 +66,7 @@ function App() {
         }
       })
       .then(() => {
-        
+
       })
       .then(() => history.push("/user"))
   };  
@@ -59,6 +74,7 @@ function App() {
   const getClientIp = async () => {
       await publicIp.v6({ fallbackUrls: [ "https://ifconfig.co/ip" ] })
       .then( response => {
+          console.log(response)
           setLocation(response)
       })
   };
@@ -86,10 +102,24 @@ function App() {
     <Redirect to="/" />
   };
 
+  const addPost = (newPost) => {
+      fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+      })
+      .then(response => response.json())
+      .then(newPost => setPosts([...posts, newPost]))
+}
+
+
   return (
     <Router>
       <div className="App">
-        <Header logout={logout}/>
         <Switch>
           <Route
             exact
@@ -104,7 +134,14 @@ function App() {
             )}
           />
           <PrivateRoute>
-            <MainPage userCommunities={userCommunities} setUserCommunities={setUserCommunities} currentUser={currentUser} />
+            <Header logout={logout}/>
+            <MainPage 
+              location={location}
+              userCommunities={userCommunities} 
+              setUserCommunities={setUserCommunities} 
+              currentUser={currentUser} 
+              posts={posts}
+              addPost={addPost} />
           </PrivateRoute>
         </Switch>
       </div>

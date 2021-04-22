@@ -9,14 +9,14 @@ export default function Header({ logout }) {
   }
 
   return (
-    <nav class="flex items-center justify-between flex-wrap bg-teal p-6">
-      <div class="flex items-center flex-no-shrink mr-6">
-        <span class="font-semibold text-xl tracking-tight">Diversify</span>
+    <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
+      <div className="flex items-center flex-no-shrink mr-6">
+        <span className="font-semibold text-xl tracking-tight">Diversify</span>
       </div>
-      <div class="block lg:hidden">
-        <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
+      <div className="block lg:hidden">
+        <button className="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
           <svg
-            class="h-3 w-3"
+            className="h-3 w-3"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -25,8 +25,8 @@ export default function Header({ logout }) {
           </svg>
         </button>
       </div>
-      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
+      <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div className="text-sm lg:flex-grow">
           <SearchBar
             // value={this.state.value}
             // onChange={(newValue) => this.setState({ value: newValue })}

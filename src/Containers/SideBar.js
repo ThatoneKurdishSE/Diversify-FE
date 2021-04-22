@@ -16,7 +16,6 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
         e.preventDefault()
         setIsToggled(!isToggled)
     }
-    console.log(userCommunities)
 
     return (
         <div className="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 border-solid border-4 border-green-200">
@@ -28,7 +27,7 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
                 </a>
             </div>
             { isToggled? 
-             (myCommunityList)
+            (myCommunityList)
             : 
             (communityList)
             }
