@@ -2,14 +2,15 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
-import NavBar from "./Components/NavBar";
 import PrivateRoute from "./Components/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Components/Header";
+import publicIp from "public-ip";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [communities, setCommunities] = useState([])
+  const [location, setLocation] = useState()
 
   const baseUrl = "http://localhost:3000";
 
@@ -43,9 +44,20 @@ function App() {
         if(data.token !== undefined) {
           localStorage.setItem("token", data.token)
           setIsLoggedIn(true)
+          getClientIp()
         }
       })
+      .then(() => {
+        
+      })
       .then(() => history.push("/user"))
+  };  
+
+  const getClientIp = async () => {
+      await publicIp.v6({ fallbackUrls: [ "https://ifconfig.co/ip" ] })
+      .then( response => {
+          setLocation(response)
+      })
   };
 
   const register = (user, history) => {
@@ -67,6 +79,7 @@ function App() {
   const logout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
+    setLocation("")
   };
 
   return (
