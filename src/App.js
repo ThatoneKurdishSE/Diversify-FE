@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
-import NavBar from "./Components/NavBar";
 import PrivateRoute from "./Components/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./Components/Header";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUserCommunities, setCurrentUserCommunities] = useState([]);
+  const [userCommunities, setUserCommunities] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
 
   const baseUrl = "http://localhost:3000";
@@ -25,7 +24,7 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
-          setCurrentUserCommunities(data.communities)
+          setUserCommunities(data.communities)
           setCurrentUser(data)
         });
       }
@@ -76,7 +75,6 @@ function App() {
     <Router>
       <div className="App">
         <Header logout={logout}/>
-        {/* <NavBar /> */}
         <Switch>
           <Route
             exact
@@ -91,7 +89,7 @@ function App() {
             )}
           />
           <PrivateRoute>
-            <MainPage currentUserCommunities={currentUserCommunities} currentUser={currentUser} />
+            <MainPage userCommunities={userCommunities} setUserCommunities={setUserCommunities} currentUser={currentUser} />
           </PrivateRoute>
         </Switch>
       </div>
