@@ -3,20 +3,22 @@ import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
 import PrivateRoute from "./Components/PrivateRoute";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./Components/Header";
 import publicIp from "public-ip";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [communities, setCommunities] = useState([])
+  const [userCommunities, setUserCommunities] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
   const [location, setLocation] = useState()
 
   const baseUrl = "http://localhost:3000";
 
   useEffect(() => {
     if (localStorage.token !== undefined) {
-      fetch(`${baseUrl}/communities`, {
+      fetch(`${baseUrl}/profile`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.token}`,
@@ -25,7 +27,8 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
-          setCommunities(data)
+          setUserCommunities(data.communities)
+          setCurrentUser(data)
         });
       }
   }, [isLoggedIn]);
@@ -80,13 +83,13 @@ function App() {
     localStorage.clear();
     setIsLoggedIn(false);
     setLocation("")
+    <Redirect to="/" />
   };
 
   return (
     <Router>
       <div className="App">
         <Header logout={logout}/>
-        {/* <NavBar /> */}
         <Switch>
           <Route
             exact
@@ -101,7 +104,7 @@ function App() {
             )}
           />
           <PrivateRoute>
-            <MainPage communities={communities}/>
+            <MainPage userCommunities={userCommunities} setUserCommunities={setUserCommunities} currentUser={currentUser} />
           </PrivateRoute>
         </Switch>
       </div>
