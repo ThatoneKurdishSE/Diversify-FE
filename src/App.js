@@ -82,7 +82,7 @@ function App() {
   const logout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
-    setLocation("")
+    setLocation("");
     <Redirect to="/" />
   };
 
