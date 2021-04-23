@@ -85,4 +85,15 @@
     .main-page-container {
         @apply md:flex flex-col md:flex-row md:min-h-screen md:min-w-full pl-5 pt-3 ;
     }
+    .community-navbar {
+        @apply bg-gray-700
+        relative
+        flex
+        flex-wrap
+        items-center
+        justify-between
+        px-2
+        py-3;
+
+    }
   }
