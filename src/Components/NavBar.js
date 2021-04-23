@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-export default function Navbar({community}) {
+export default function Navbar({ community }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -40,7 +40,9 @@ export default function Navbar({community}) {
               "
               href="#"
             >
-              {community === null ? `Diversify` : `${community.name} ( ${community.location} )`}
+              {community === null
+                ? `Diversify`
+                : `${community.name} ( ${community.location} )`}
             </a>
           </div>
           <div
