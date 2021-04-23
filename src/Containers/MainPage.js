@@ -3,9 +3,8 @@ import SideBar from './SideBar';
 import NavBar from '../Components/NavBar';
 import ChatBox from '../Components/ChatBox';
 import CommunityPosts from '../Containers/CommunityPosts';
-import Header from '../Components/Header';
 
-export default function MainPage({ logout, userCommunities, currentUser, posts, location, addPost }) {
+export default function MainPage({ userCommunities, currentUser, posts, location, addPost }) {
     const [community, setCommunity] = useState(null)
     const [communities, setCommunities] = useState([])
 
