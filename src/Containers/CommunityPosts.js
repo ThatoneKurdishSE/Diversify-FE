@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import PostCard from '../Components/PostCard';
 
 export default function CommunityPosts({ posts, community }) {

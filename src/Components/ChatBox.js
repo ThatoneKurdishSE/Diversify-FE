@@ -14,7 +14,7 @@ export default function ChatBox({ community, currentUser, location, addPost }) {
         setFormData({
             ...formData,
             user_id: currentUser.id,
-            ip_address: "0",
+            ip_address: location.IPv4,
             community_id: community.id,
             [event.target.name]: event.target.value
         })
