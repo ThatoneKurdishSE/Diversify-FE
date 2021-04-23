@@ -9,7 +9,6 @@ import publicIp from "public-ip";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [communities, setCommunities] = useState([]);
   const [userCommunities, setUserCommunities] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [location, setLocation] = useState();
@@ -41,13 +40,16 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data)
           setUserCommunities(data.communities)
           setCurrentUser(data)
+          getPosts()
         });
       }
   }, [isLoggedIn]);
 
-  useEffect(() => {
+
+  const getPosts = () => {
     if (localStorage.token !== undefined) {
       fetch(`${baseUrl}/posts`, {
         method: "GET",
@@ -60,7 +62,7 @@ function App() {
           setPosts(data)
         })
       }
-  }, []);
+  }
 
   const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
@@ -116,6 +118,21 @@ function App() {
     <Redirect to="/" />
   };
 
+  const addPost = (newPost) => {
+      setPosts(...posts, newPost)
+
+      fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+      })
+      .then(() => getPosts())
+}
+  
   return (
     <Router>
       <div className="App">
