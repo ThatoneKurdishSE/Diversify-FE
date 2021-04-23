@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CommunitiesListItem from "../Components/CommunitiesListItem";
 import SearchBar from "../Components/SearchBar";
+import AddCommunityForm from '../Components/AddCommunityForm';
 
 export default function SideBar({
   userCommunities,
@@ -8,11 +9,12 @@ export default function SideBar({
   setUserCommunities,
   setCommunity,
   setCommunities,
+  addCommunity
   setNavbarOpen,
 }) {
   const [isToggled, setIsToggled] = useState(false);
-
   const [filteredCommunities, setFilteredCommunities] = useState([]);
+  const [showCommunityForm, setShowCommunityForm] = useState(false);
 
   useEffect(() => setFilteredCommunities(communities), [communities]);
 
@@ -59,7 +61,10 @@ export default function SideBar({
       />
       {isToggled ? userCommunityList : communityList}
       <div className="flex items-center mt-3 justify-center">
-        <button className="btn-blue m-3">Create new community</button>
+        <button className="btn-blue m-3" onClick={() => setShowCommunityForm(!showCommunityForm)}>Create new community</button>
+      </div>
+      <div>
+        {showCommunityForm ? <AddCommunityForm addCommunity={addCommunity} /> : null}
       </div>
     </div>
   );
