@@ -1,8 +1,28 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-export default function Navbar({ community }) {
+export default function Navbar({ community, currentUser }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  const baseUrl = "http://localhost:3000"
+  const join = () => {
+    const communityId = community.id
+    const userId = currentUser.id
+
+    fetch(`${baseUrl}/user_communities`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userId, communityId)
+    })
+    .then((response) => {
+      response.json();
+      console.log(response);
+    })
+  }
+
   return (
     <>
       <nav
@@ -95,7 +115,9 @@ export default function Navbar({ community }) {
                   "
                   href="#"
                 >
-                  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex">
+                  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex"
+                    onClick={join}
+                  >
                   <span className="pl-1">Join</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
