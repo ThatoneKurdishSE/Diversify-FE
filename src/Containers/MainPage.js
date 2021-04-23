@@ -30,8 +30,8 @@ export default function MainPage({ userCommunities, currentUser, posts, location
                 <SideBar communities={communities} userCommunities={userCommunities} setCommunity={setCommunity}/>
                 <div className="flex flex-col justify-between w-full md:w-9/12 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 border-solid border-4 border-red-200 ml-2" >
                     <NavBar community={community} />
-                    <CommunityPosts posts={posts} community={community} />
-                    <ChatBox community={community} currentUser={currentUser} location={location} addPost={addPost} />
+                    {community ? <CommunityPosts posts={posts} community={community} /> : null }
+                    {community ? <ChatBox community={community} currentUser={currentUser} location={location} addPost={addPost} /> : null }
                 </div>
             </div>
     )
