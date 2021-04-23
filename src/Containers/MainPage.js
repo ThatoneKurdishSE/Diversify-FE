@@ -10,26 +10,11 @@ export default function MainPage({
   posts,
   location,
   addPost,
+  communities,
+  setCommunities,
+  addCommunity
 }) {
   const [community, setCommunity] = useState(null);
-  const [communities, setCommunities] = useState([]);
-
-  const baseUrl = "http://localhost:3000";
-
-  useEffect(() => {
-    if (localStorage.token !== undefined) {
-      fetch(`${baseUrl}/communities`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setCommunities(data);
-        });
-    }
-  }, []);
 
   return (
     <div className="main-page-container">
@@ -38,6 +23,7 @@ export default function MainPage({
         setCommunities={setCommunities}
         userCommunities={userCommunities}
         setCommunity={setCommunity}
+        addCommunity={addCommunity}
       />
       <div className="post-container">
         <NavBar community={community} />

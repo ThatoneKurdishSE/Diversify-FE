@@ -18,6 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]);
   const [location, setLocation] = useState();
   const [posts, setPosts] = useState([]);
+  const [communities, setCommunities] = useState([]);
   const baseUrl = "http://localhost:3000";
 
   useEffect(() => {
@@ -30,10 +31,10 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setUserCommunities(data.communities);
           setCurrentUser(data);
           getPosts();
+          getCommunities();
         });
     }
   }, [isLoggedIn]);
@@ -49,6 +50,21 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           setPosts(data);
+        });
+    }
+  };
+
+  const getCommunities = () => {
+    if (localStorage.token !== undefined) {
+      fetch(`${baseUrl}/communities`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setCommunities(data);
         });
     }
   };
@@ -107,7 +123,7 @@ function App() {
   };
 
   const addPost = (newPost) => {
-    fetch('http://localhost:3000/posts', {
+    fetch(`${baseUrl}/posts`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.token}`,
@@ -117,6 +133,19 @@ function App() {
         body: JSON.stringify(newPost)
       })
       .then(() => getPosts())
+  }
+
+  const addCommunity = (newCommunity) => {
+    fetch(`${baseUrl}/communities`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(newCommunity)
+    })
+    .then(() => getCommunities())
   }
   
   return (
@@ -144,6 +173,9 @@ function App() {
               currentUser={currentUser}
               posts={posts}
               addPost={addPost}
+              communities={communities}
+              setCommunities={setCommunities}
+              addCommunity={addCommunity}
             />
           </PrivateRoute>
         </Switch>
