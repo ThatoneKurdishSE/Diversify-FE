@@ -23,28 +23,30 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
     }
 
     return (
-        <div className="
-            flex
-            flex-col
-            w-full
-            md:w-64
-            text-gray-700
-            bg-white
-            dark-mode:text-gray-200
-            dark-mode:bg-gray-800
-            flex-shrink-0
-            border-solid
-            border-4
-            border-green-200
-            ">
-            <div className="
-                flex-shrink-0
-                px-8
-                py-4
+        <div
+            className="
                 flex
-                flex-row
-                items-center
-                justify-center
+                flex-col
+                w-full
+                md:w-64
+                text-gray-700
+                bg-white
+                dark-mode:text-gray-200
+                dark-mode:bg-gray-800
+                flex-shrink-0
+                border-solid
+                border-4
+                border-green-200
+            ">
+            <div
+                className="
+                    flex-shrink-0
+                    px-8
+                    py-4
+                    flex
+                    flex-row
+                    items-center
+                    justify-center
                 ">
                 <button
                     onClick={toggle}
