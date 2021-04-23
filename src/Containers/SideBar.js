@@ -57,7 +57,7 @@ export default function SideBar({
       />
       {isToggled ? userCommunityList : communityList}
       <div className="flex items-center mt-3 justify-center">
-        <button className="btn-blue">Create new community</button>
+        <button className="btn-blue m-3">Create new community</button>
       </div>
     </div>
   );

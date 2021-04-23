@@ -3,12 +3,14 @@ export default function SearchBar( props ) {
   return (
     <div
       className="
+        sb-container
         text-sm
-        lg:flex-grow
+        sm:flex
+        flex-col
       "
     >
       <label htmlFor="search">Search for a community</label>
-      <input type="text" name="search" id="search" onChange={props.filterCommunities}/>
+      <input className="border border-black border-solid m-2" type="text" name="search" id="search" onChange={props.filterCommunities}/>
     </div>
   );
 }
