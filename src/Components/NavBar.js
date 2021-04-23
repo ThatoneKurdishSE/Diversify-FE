@@ -38,7 +38,7 @@ export default function Navbar({ community }) {
                 whitespace-nowrap
                 text-white
               "
-              href="/"
+              href="#"
             >
               {community === null
                 ? `Diversify`
@@ -122,7 +122,7 @@ export default function Navbar({ community }) {
                     hover:opacity-75
                     text-white
                   "
-                  href="sign-up"
+                  href="#"
                 >
                   <span className="ml-2">
                     Details
