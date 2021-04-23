@@ -5,7 +5,7 @@ export default function CommunityPosts({ posts, community }) {
 
     const displayPosts = () => {
         if (community) {
-            return posts.filter(post => post.community.id === 13).map(post => <PostCard title={post.title} content={post.content} username={post.user.username}  />)
+            return posts.filter(post => post.community.id === community.id).map(post => <PostCard title={post.title} content={post.content} username={post.user.username}  />)
         }
     }
 
