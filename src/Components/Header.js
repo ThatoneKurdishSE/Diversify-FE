@@ -38,10 +38,11 @@ export default function Header({ logout }) {
           block
           flex-grow
           lg:flex
-          lg:items-center
+          lg:items-end
           lg:w-auto
+          justify-end 
         ">
-          <button onClick={handleClick}>
+          <button className="content-end justify-end align-end" onClick={handleClick}>
             Logout
           </button>
         </div>
