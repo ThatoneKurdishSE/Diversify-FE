@@ -8,6 +8,7 @@ export default function SideBar({
   setUserCommunities,
   setCommunity,
   setCommunities,
+  setNavbarOpen,
 }) {
   const [isToggled, setIsToggled] = useState(false);
 
@@ -32,6 +33,7 @@ export default function SideBar({
           key={community.id}
           community={community}
           setCommunity={setCommunity}
+          setNavbarOpen={setNavbarOpen}
         />
       );
     });

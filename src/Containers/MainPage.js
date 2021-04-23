@@ -10,9 +10,11 @@ export default function MainPage({
   posts,
   location,
   addPost,
+  navBarOpen
 }) {
   const [community, setCommunity] = useState(null);
   const [communities, setCommunities] = useState([]);
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   const baseUrl = "http://localhost:3000";
 
@@ -38,9 +40,13 @@ export default function MainPage({
         setCommunities={setCommunities}
         userCommunities={userCommunities}
         setCommunity={setCommunity}
+        setNavbarOpen={setNavbarOpen}
       />
       <div className="post-container">
-        <NavBar community={community} currentUser={currentUser}/>
+        <NavBar
+          community={community} 
+          navbarOpen={navbarOpen}
+        />
         {community ? (
           <CommunityPosts posts={posts} community={community} />
         ) : null}

@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-export default function Navbar({ community, currentUser }) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
-
+export default function Navbar({ community , currentUser, navbarOpen}) {
   const baseUrl = "http://localhost:3000"
   const join = () => {
     const communityId = community.id
@@ -21,6 +19,67 @@ export default function Navbar({ community, currentUser }) {
       response.json();
       console.log(response);
     })
+   
+  const joinButton = () => {
+    return (
+      <li className="nav-item">
+        <a
+          className="
+            px-3
+            py-2
+            flex
+            items-center
+            text-xs
+            font-bold
+            leading-snug
+            hover:opacity-75
+            text-white
+          "
+          href="#"
+        >
+          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex">
+          <span className="pl-1">Join</span>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </button>
+        </a>
+      </li>
+    )
+  }
+
+  const leaveButton = () => {
+    return (
+      <li className="nav-item">
+        <a
+          className="
+            px-3
+            py-2
+            flex
+            items-center
+            text-xs
+            font-bold
+            leading-snug
+            hover:opacity-75
+            text-white
+          "
+          href="#"
+        >
+          <button class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex">
+          <span className="pl-1">Leave</span>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </button>
+        </a>
+      </li>
+    )
+  }
+
+  const handleCommunityMembership = () => {
+    return (
+      leaveButton()
+    )
   }
 
   return (
@@ -100,31 +159,7 @@ export default function Navbar({ community, currentUser }) {
                 list-none
                 lg:ml-auto
               ">
-              <li className="nav-item">
-                <a
-                  className="
-                    px-3
-                    py-2
-                    flex
-                    items-center
-                    text-xs
-                    font-bold
-                    leading-snug
-                    hover:opacity-75
-                    text-white
-                  "
-                  href="#"
-                >
-                  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex"
-                    onClick={join}
-                  >
-                  <span className="pl-1">Join</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                  </button>
-                </a>
-              </li>
+              { handleCommunityMembership() }
               <li className="sign-up">
                 <a
                   className="
