@@ -40,7 +40,7 @@ export default function MainPage({
         setCommunity={setCommunity}
       />
       <div className="post-container">
-        <NavBar community={community} />
+        <NavBar community={community} currentUser={currentUser}/>
         {community ? (
           <CommunityPosts posts={posts} community={community} />
         ) : null}
