@@ -16,19 +16,19 @@ function App() {
 
   const baseUrl = "http://localhost:3000";
 
-  const addPost = (newPost) => {
-      fetch('http://localhost:3000/posts', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(newPost)
-      })
-      .then(response => response.json())
-      .then(() => setPosts([...posts, newPost]))
-    }
+  // const addPost = (newPost) => {
+  //     fetch('http://localhost:3000/posts', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Authorization': `Bearer ${localStorage.token}`,
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json'
+  //       },
+  //       body: JSON.stringify(newPost)
+  //     })
+  //     .then(response => response.json())
+  //     .then(() => setPosts([...posts, newPost]))
+  //   }
 
   useEffect(() => {
     if (localStorage.token !== undefined) {
@@ -119,8 +119,6 @@ function App() {
   };
 
   const addPost = (newPost) => {
-      setPosts(...posts, newPost)
-
       fetch('http://localhost:3000/posts', {
         method: 'POST',
         headers: {

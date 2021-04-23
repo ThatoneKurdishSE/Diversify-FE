@@ -24,43 +24,12 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
 
     return (
         <div
-            className="
-                flex
-                flex-col
-                w-full
-                md:w-64
-                text-gray-700
-                bg-white
-                dark-mode:text-gray-200
-                dark-mode:bg-gray-800
-                flex-shrink-0
-                border-solid
-                border-4
-                border-green-200
-            ">
+            className="side-bar">
             <div
-                className="
-                    flex-shrink-0
-                    px-8
-                    py-4
-                    flex
-                    flex-row
-                    items-center
-                    justify-center
-                ">
+                className="sb-container">
                 <button
                     onClick={toggle}
-                    className="
-                        text-md
-                        font-semibold
-                        tracking-widest
-                        text-gray-900
-                        uppercase
-                        rounded-lg
-                        dark-mode:text-white
-                        focus:outline-none
-                        focus:shadow-outline
-                        ">
+                    className="sb-title">
                     { isToggled ? "My Communities" : "Communities" }
                 </button>
             </div>
@@ -69,8 +38,10 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
             : 
             (communityList)
             }
-            <div>
-                Create new community
+            <div className="flex items-center mt-3 justify-center">
+                <button className="btn-blue">
+                    Create new community
+                </button>
             </div>
         </div>
     )

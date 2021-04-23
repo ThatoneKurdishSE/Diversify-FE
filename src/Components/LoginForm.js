@@ -62,9 +62,7 @@ export default function LoginForm({ login, setIsRegistered, history }) {
         />
         <div className="flex items-center mt-3 justify-center">
           <button
-            className={
-              "btn-blue"
-            }
+            className={"btn-blue"}
             value="Login"
           >
             Login
