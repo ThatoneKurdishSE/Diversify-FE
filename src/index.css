@@ -9,7 +9,13 @@
     .insrt-data {
         @apply w-full p-2 text-base border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4;
     }
+<<<<<<< HEAD
     /* .com-li {
         @apply ;
     } */
+=======
+    .com-li {
+        /* @apply ; */
+    }
+>>>>>>> 6992dcf0d5c614816bc44c1f99b10b02a4495201
   }

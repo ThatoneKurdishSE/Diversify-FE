@@ -107,6 +107,7 @@ function App() {
   };
 
   const addPost = (newPost) => {
+<<<<<<< HEAD
     fetch("http://localhost:3000/posts", {
       method: "POST",
       headers: {
@@ -118,6 +119,20 @@ function App() {
     }).then(() => getPosts());
   };
 
+=======
+    fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+      })
+      .then(() => getPosts())
+  }
+  
+>>>>>>> 6992dcf0d5c614816bc44c1f99b10b02a4495201
   return (
     <Router>
       <div className="App">
