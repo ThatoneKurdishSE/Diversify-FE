@@ -16,20 +16,6 @@ function App() {
 
   const baseUrl = "http://localhost:3000";
 
-  // const addPost = (newPost) => {
-  //     fetch('http://localhost:3000/posts', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Authorization': `Bearer ${localStorage.token}`,
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json'
-  //       },
-  //       body: JSON.stringify(newPost)
-  //     })
-  //     .then(response => response.json())
-  //     .then(() => setPosts([...posts, newPost]))
-  //   }
-
   useEffect(() => {
     if (localStorage.token !== undefined) {
       fetch(`${baseUrl}/profile`, {
@@ -119,7 +105,7 @@ function App() {
   };
 
   const addPost = (newPost) => {
-      fetch('http://localhost:3000/posts', {
+    fetch('http://localhost:3000/posts', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.token}`,
@@ -129,7 +115,7 @@ function App() {
         body: JSON.stringify(newPost)
       })
       .then(() => getPosts())
-}
+  }
   
   return (
     <Router>
