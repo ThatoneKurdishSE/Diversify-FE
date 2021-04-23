@@ -46,7 +46,7 @@ export default function LoginForm({ login, setIsRegistered, history }) {
           onChange={handleChange}
           placeholder="Username"
           className={
-            "w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+            "insrt-data"
           }
         />
         <label>Password:</label>
@@ -57,13 +57,13 @@ export default function LoginForm({ login, setIsRegistered, history }) {
           onChange={handleChange}
           placeholder="Password"
           className={
-            "w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+            "insrt-data"
           }
         />
         <div className="flex items-center mt-3 justify-center">
           <button
             className={
-              "bg-blue-700 hover:bg-blue-500 py-2 px-4 text-md text-white rounded border border-blue focus:outline-none focus:border-black"
+              "btn-blue"
             }
             value="Login"
           >

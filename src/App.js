@@ -105,6 +105,8 @@ function App() {
   };
 
   const addPost = (newPost) => {
+      setPosts(...posts, newPost)
+
       fetch('http://localhost:3000/posts', {
         method: 'POST',
         headers: {

@@ -69,6 +69,9 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
             : 
             (communityList)
             }
+            <div>
+                Create new community
+            </div>
         </div>
     )
 }
