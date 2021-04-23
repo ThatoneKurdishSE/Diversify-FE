@@ -15,7 +15,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userCommunities, setUserCommunities] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
-  const [locationDetails, setLocationDetails] = useState(null);
+  const [locationDetails, setLocationDetails] = useState();
   const [posts, setPosts] = useState([]);
 
   const parseHTTPResponse = response => response.json()
@@ -37,7 +37,7 @@ function App() {
           getPosts();
         });
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn,]);
 
   const getPosts = () => {
     if (localStorage.token !== undefined) {
