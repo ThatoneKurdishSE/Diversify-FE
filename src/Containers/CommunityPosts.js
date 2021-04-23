@@ -10,7 +10,7 @@ export default function CommunityPosts({ posts, community }) {
     }
 
     return (
-        <div className="flex flex-col items-center justify-end w-full h-3/4 border-solid border-4 border-blue-200">
+        <div className="flex flex-col items-center justify-end w-full h-3/4 max-h-118 overflow-hidden border-solid border-4 border-blue-200">
             {displayPosts()}
         </div>
     )
