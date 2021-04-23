@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "material-ui-search-bar";
 
 export default function Header({ logout }) {
-  const [search, setSearch] = useState("")
-
   const handleClick = () => {
     logout();
   };
@@ -77,20 +75,10 @@ export default function Header({ logout }) {
           lg:items-center
           lg:w-auto
         ">
-        <div
-          className="
-            text-sm
-            lg:flex-grow
-          ">
-            <label htmlFor="search">Search for a community</label>
-            <input type="text" name="serach" id="search"/>
-        </div>
-        <div>
           <button onClick={handleClick}>
             Logout
           </button>
         </div>
-      </div>
     </nav>
   );
 }

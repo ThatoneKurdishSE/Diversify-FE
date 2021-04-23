@@ -10,6 +10,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import publicIp from "public-ip";
+import Header from "./Components/Header";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -135,8 +136,8 @@ function App() {
             )}
           />
           <PrivateRoute>
+            <Header logout={logout} />
             <MainPage
-              logout={logout} 
               location={location}
               userCommunities={userCommunities}
               setUserCommunities={setUserCommunities}
