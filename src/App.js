@@ -27,6 +27,7 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data)
           setUserCommunities(data.communities)
           setCurrentUser(data)
         });
@@ -46,7 +47,7 @@ function App() {
           setPosts(data)
         });
       }
-  }, [posts]);
+  }, []);
 
   const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
@@ -103,6 +104,8 @@ function App() {
   };
 
   const addPost = (newPost) => {
+      setPosts(...posts, newPost)
+
       fetch('http://localhost:3000/posts', {
         method: 'POST',
         headers: {
