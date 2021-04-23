@@ -1,6 +1,5 @@
 import React from "react";
 import SearchBar from "material-ui-search-bar";
-import { Link } from 'react-router-dom'
 
 export default function Header({ logout }) {
 
