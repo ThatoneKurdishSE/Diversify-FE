@@ -6,7 +6,10 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
 
     let communityList = communities.map(community => <CommunitiesListItem key={community.id} community={community} setCommunity={setCommunity}/>)
     let myCommunityList = () => {
-        if (userCommunities.length === 0) return userCommunities
+        setCommunity(null)
+        if (userCommunities.length = 0){
+            return userCommunities
+        }
         else return (
             userCommunities.map(community => <CommunitiesListItem key={community.id} community={community} setCommunity={setCommunity}/>)
             )
@@ -36,10 +39,13 @@ export default function SideBar({userCommunities, communities, setUserCommunitie
                 </button>
             </div>
             { isToggled? 
-            (myCommunityList)
+            (myCommunityList())
             : 
             (communityList)
             }
+            <div>
+                Create new community
+            </div>
         </div>
     )
 }
