@@ -9,13 +9,27 @@ import publicIp from "public-ip";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [communities, setCommunities] = useState([])
+  const [communities, setCommunities] = useState([]);
   const [userCommunities, setUserCommunities] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [location, setLocation] = useState();
   const [posts, setPosts] = useState([]);
 
   const baseUrl = "http://localhost:3000";
+
+  const addPost = (newPost) => {
+      fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+      })
+      .then(response => response.json())
+      .then(() => setPosts([...posts, newPost]))
+    }
 
   useEffect(() => {
     if (localStorage.token !== undefined) {
@@ -44,9 +58,9 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           setPosts(data)
-        });
+        })
       }
-  }, [posts]);
+  }, []);
 
   const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
@@ -73,7 +87,7 @@ function App() {
 
   const getClientIp = async () => {
       await publicIp.v6({ fallbackUrls: [ "https://ifconfig.co/ip" ] })
-      .then( response => {
+      .then(response => {
           console.log(response)
           setLocation(response)
       })
@@ -101,20 +115,6 @@ function App() {
     setLocation("");
     <Redirect to="/" />
   };
-
-  const addPost = (newPost) => {
-      fetch('http://localhost:3000/posts', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(newPost)
-      })
-      .then(response => response.json())
-}
-
 
   return (
     <Router>
