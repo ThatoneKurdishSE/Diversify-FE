@@ -19,6 +19,7 @@ export default function Navbar({ community , currentUser, navbarOpen}) {
       response.json();
       console.log(response);
     })
+  }
    
   const joinButton = () => {
     return (
