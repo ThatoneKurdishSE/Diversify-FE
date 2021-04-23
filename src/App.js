@@ -9,7 +9,6 @@ import publicIp from "public-ip";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [communities, setCommunities] = useState([])
   const [userCommunities, setUserCommunities] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [location, setLocation] = useState();
@@ -30,11 +29,13 @@ function App() {
           console.log(data)
           setUserCommunities(data.communities)
           setCurrentUser(data)
+          getPosts()
         });
       }
   }, [isLoggedIn]);
 
-  useEffect(() => {
+
+  const getPosts = () => {
     if (localStorage.token !== undefined) {
       fetch(`${baseUrl}/posts`, {
         method: "GET",
@@ -47,7 +48,7 @@ function App() {
           setPosts(data)
         });
       }
-  }, []);
+  }
 
   const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
@@ -115,7 +116,7 @@ function App() {
         },
         body: JSON.stringify(newPost)
       })
-      .then(response => response.json())
+      .then(() => getPosts())
 }
 
 
