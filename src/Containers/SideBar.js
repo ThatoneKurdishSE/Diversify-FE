@@ -9,7 +9,7 @@ export default function SideBar({
   setUserCommunities,
   setCommunity,
   setCommunities,
-  addCommunity
+  addCommunity,
   setNavbarOpen,
 }) {
   const [isToggled, setIsToggled] = useState(false);
