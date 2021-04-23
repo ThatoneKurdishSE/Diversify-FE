@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "material-ui-search-bar";
 import { Link } from "react-router-dom";
 
 export default function Header({ logout }) {
+  const [search, setSearch] = useState()
+
   const handleClick = () => {
     logout();
   };
@@ -27,8 +29,8 @@ export default function Header({ logout }) {
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
           <SearchBar
-          // value={this.state.value}
-          // onChange={(newValue) => this.setState({ value: newValue })}
+          // value={search.value}
+          // onChange={(newValue) => setSearch({ value: newValue })}
           // onRequestSearch={() => doSomethingWith(this.state.value)}
           />
         </div>

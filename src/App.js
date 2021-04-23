@@ -46,7 +46,7 @@ function App() {
           setPosts(data)
         });
       }
-  }, [posts]);
+  }, []);
 
   const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
@@ -103,16 +103,19 @@ function App() {
   };
 
   const addPost = (newPost) => {
-      fetch('http://localhost:3000/posts', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(newPost)
-      })
-      .then(response => response.json())
+    console.log(newPost);
+    setPosts([...posts, newPost])
+
+      // fetch('http://localhost:3000/posts', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Authorization': `Bearer ${localStorage.token}`,
+      //     'Content-Type': 'application/json',
+      //     'Accept': 'application/json'
+      //   },
+      //   body: JSON.stringify(newPost)
+      // })
+      // .then(response => response.json())
 }
 
 
