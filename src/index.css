@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn-blue {
+      @apply bg-blue-700 hover:bg-blue-500 py-2 px-4 text-base text-white rounded border border-blue-600 focus:outline-none focus:border-black;
+    },
+    .insrt-data {
+        @apply w-full p-2 text-base border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4;
+    }
+    .com-li {
+        @apply ;
+    }
+  }
