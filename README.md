@@ -53,7 +53,7 @@ MVP Achieved.
   - [John Hubert](https://www.linkedin.com/in/jackhubert/)
 
 - Ryan Choe
-  - [ryan.choe.com](https://ryanachoe.com/)
+  - [ryanachoe.com](https://ryanachoe.com/)
   - [Ryan Choe](https://www.linkedin.com/in/ryanchoe1229/)
 
 - Stephen Galvan
