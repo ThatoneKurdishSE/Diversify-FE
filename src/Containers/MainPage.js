@@ -26,9 +26,9 @@ export default function MainPage({ userCommunities, currentUser, posts, location
       }, []);
 
     return (
-            <div className="md:flex flex-col md:flex-row md:min-h-screen md:min-w-screen pl-5 pt-3">
+            <div className="main-page-container">
                 <SideBar communities={communities} userCommunities={userCommunities} setCommunity={setCommunity}/>
-                <div className="flex flex-col justify-between w-full md:w-9/12 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 border-solid border-4 border-red-200 ml-2" >
+                <div className="post-container" >
                     <NavBar community={community} />
                     {community ? <CommunityPosts posts={posts} community={community} /> : null }
                     {community ? <ChatBox community={community} currentUser={currentUser} location={location} addPost={addPost} /> : null }
