@@ -16,6 +16,20 @@ function App() {
 
   const baseUrl = "http://localhost:3000";
 
+  const addPost = (newPost) => {
+      fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+      })
+      .then(response => response.json())
+      .then(() => setPosts([...posts, newPost]))
+    }
+
   useEffect(() => {
     if (localStorage.token !== undefined) {
       fetch(`${baseUrl}/profile`, {
@@ -46,7 +60,7 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           setPosts(data)
-        });
+        })
       }
   }
 
@@ -75,7 +89,7 @@ function App() {
 
   const getClientIp = async () => {
       await publicIp.v6({ fallbackUrls: [ "https://ifconfig.co/ip" ] })
-      .then( response => {
+      .then(response => {
           console.log(response)
           setLocation(response)
       })
@@ -118,8 +132,7 @@ function App() {
       })
       .then(() => getPosts())
 }
-
-
+  
   return (
     <Router>
       <div className="App">
