@@ -3,7 +3,12 @@ import React, { useState, useEffect } from "react";
 import Login from "./Components/Login";
 import MainPage from "./Containers/MainPage";
 import PrivateRoute from "./Components/PrivateRoute";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Header from "./Components/Header";
 import publicIp from "public-ip";
 
@@ -25,14 +30,13 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
-          setUserCommunities(data.communities)
-          setCurrentUser(data)
-          getPosts()
+          console.log(data);
+          setUserCommunities(data.communities);
+          setCurrentUser(data);
+          getPosts();
         });
-      }
+    }
   }, [isLoggedIn]);
-
 
   const getPosts = () => {
     if (localStorage.token !== undefined) {
@@ -44,10 +48,10 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
-          setPosts(data)
-        })
-      }
-  }
+          setPosts(data);
+        });
+    }
+  };
 
   const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
@@ -60,24 +64,23 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if(data.token !== undefined) {
-          localStorage.setItem("token", data.token)
-          setIsLoggedIn(true)
-          getClientIp()
+        if (data.token !== undefined) {
+          localStorage.setItem("token", data.token);
+          setIsLoggedIn(true);
+          getClientIp();
         }
       })
-      .then(() => {
-
-      })
-      .then(() => history.push("/user"))
-  };  
+      .then(() => {})
+      .then(() => history.push("/user"));
+  };
 
   const getClientIp = async () => {
-      await publicIp.v6({ fallbackUrls: [ "https://ifconfig.co/ip" ] })
-      .then(response => {
-          console.log(response)
-          setLocation(response)
-      })
+    await publicIp
+      .v6({ fallbackUrls: ["https://ifconfig.co/ip"] })
+      .then((response) => {
+        console.log(response);
+        setLocation(response);
+      });
   };
 
   const register = (user, history) => {
@@ -100,22 +103,21 @@ function App() {
     localStorage.clear();
     setIsLoggedIn(false);
     setLocation("");
-    <Redirect to="/" />
+    <Redirect to="/" />;
   };
 
   const addPost = (newPost) => {
-      fetch('http://localhost:3000/posts', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(newPost)
-      })
-      .then(() => getPosts())
-}
-  
+    fetch("http://localhost:3000/posts", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(newPost),
+    }).then(() => getPosts());
+  };
+
   return (
     <Router>
       <div className="App">
@@ -133,14 +135,15 @@ function App() {
             )}
           />
           <PrivateRoute>
-            <Header logout={logout}/>
-            <MainPage 
+            <Header logout={logout} />
+            <MainPage
               location={location}
-              userCommunities={userCommunities} 
-              setUserCommunities={setUserCommunities} 
-              currentUser={currentUser} 
+              userCommunities={userCommunities}
+              setUserCommunities={setUserCommunities}
+              currentUser={currentUser}
               posts={posts}
-              addPost={addPost} />
+              addPost={addPost}
+            />
           </PrivateRoute>
         </Switch>
       </div>
