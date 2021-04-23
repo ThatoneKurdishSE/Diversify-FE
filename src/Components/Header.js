@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "material-ui-search-bar";
 
 export default function Header({ logout }) {
+  const [search, setSearch] = useState("")
 
   const handleClick = () => {
     logout();
-  }
+  };
 
   return (
     <nav
@@ -81,7 +82,8 @@ export default function Header({ logout }) {
             text-sm
             lg:flex-grow
           ">
-          <SearchBar/>
+            <label htmlFor="search">Search for a community</label>
+            <input type="text" name="serach" id="search"/>
         </div>
         <div>
           <button onClick={handleClick}>

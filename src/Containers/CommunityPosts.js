@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import PostCard from '../Components/PostCard';
 
 export default function CommunityPosts({ posts, community }) {
+  const addPost = (newPost) => {
+      fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+      })
+      .then(response => response.json())
+  }
 
     const displayPosts = () => {
         if (community) {
