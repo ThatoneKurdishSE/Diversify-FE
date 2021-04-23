@@ -21,7 +21,7 @@ export default function ChatBox({ community, currentUser, location, addPost }) {
     }
 
     const handleSubmit = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         addPost(formData)
     }
 

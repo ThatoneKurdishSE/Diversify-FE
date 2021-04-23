@@ -46,7 +46,7 @@ function App() {
           setPosts(data)
         });
       }
-  }, [isLoggedIn]);
+  }, [posts]);
 
   const login = (user, history) => {
     fetch(`${baseUrl}/login`, {
@@ -113,7 +113,6 @@ function App() {
         body: JSON.stringify(newPost)
       })
       .then(response => response.json())
-      .then(newPost => setPosts([...posts, newPost]))
 }
 
 
