@@ -9,16 +9,17 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import publicIp from "public-ip";
 import Header from "./Components/Header";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userCommunities, setUserCommunities] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
-  const [location, setLocation] = useState();
+  const [locationDetails, setLocationDetails] = useState();
   const [posts, setPosts] = useState([]);
   const [communities, setCommunities] = useState([]);
+  const parseHTTPResponse = response => response.json()
+
   const baseUrl = "http://localhost:3000";
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function App() {
           Authorization: `Bearer ${localStorage.token}`,
         },
       })
-        .then((response) => response.json())
+        .then( parseHTTPResponse )
         .then((data) => {
           setUserCommunities(data.communities);
           setCurrentUser(data);
@@ -37,7 +38,7 @@ function App() {
           getCommunities();
         });
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn,]);
 
   const getPosts = () => {
     if (localStorage.token !== undefined) {
@@ -47,7 +48,7 @@ function App() {
           Authorization: `Bearer ${localStorage.token}`,
         },
       })
-        .then((response) => response.json())
+        .then( parseHTTPResponse )
         .then((data) => {
           setPosts(data);
         });
@@ -78,25 +79,22 @@ function App() {
       },
       body: JSON.stringify(user),
     })
-      .then((response) => response.json())
+      .then( parseHTTPResponse )
       .then((data) => {
         if (data.token !== undefined) {
           localStorage.setItem("token", data.token);
           setIsLoggedIn(true);
-          getClientIp();
+          getGeolocationDetails();
         }
       })
       .then(() => {})
       .then(() => history.push("/user"));
   };
 
-  const getClientIp = async () => {
-    await publicIp
-      .v6({ fallbackUrls: ["https://ifconfig.co/ip"] })
-      .then((response) => {
-        console.log(response);
-        setLocation(response);
-      });
+  const getGeolocationDetails = () => {
+    fetch('https://geolocation-db.com/json/ef6c41a0-9d3c-11eb-8f3b-e1f5536499e7/ipv6')
+      .then( parseHTTPResponse )
+      .then( details => setLocationDetails(details) )
   };
 
   const register = (user, history) => {
@@ -118,7 +116,7 @@ function App() {
   const logout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
-    setLocation("");
+    setLocationDetails(null);
     <Redirect to="/" />;
   };
 
@@ -167,7 +165,7 @@ function App() {
           <PrivateRoute>
             <Header logout={logout} />
             <MainPage
-              location={location}
+              location={locationDetails}
               userCommunities={userCommunities}
               setUserCommunities={setUserCommunities}
               currentUser={currentUser}

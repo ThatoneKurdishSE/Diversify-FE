@@ -15,6 +15,7 @@ export default function MainPage({
   addCommunity
 }) {
   const [community, setCommunity] = useState(null);
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
     <div className="main-page-container">
@@ -24,9 +25,13 @@ export default function MainPage({
         userCommunities={userCommunities}
         setCommunity={setCommunity}
         addCommunity={addCommunity}
+        setNavbarOpen={setNavbarOpen}
       />
       <div className="post-container">
-        <NavBar community={community} />
+        <NavBar
+          community={community} 
+          navbarOpen={navbarOpen}
+        />
         {community ? (
           <CommunityPosts posts={posts} community={community} />
         ) : null}

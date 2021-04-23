@@ -1,8 +1,9 @@
 import React from 'react';
 
-const CommunitiesListItem = ({community, setCommunity}) => {
+const CommunitiesListItem = ({community, setCommunity, setNavbarOpen}) => {
     let handleClick = () => {
         setCommunity(community)
+        setNavbarOpen(true)
         console.log(community)
     } 
     return (

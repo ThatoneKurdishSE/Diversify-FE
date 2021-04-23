@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import SearchBar from "material-ui-search-bar";
-
 export default function Header({ logout }) {
   const handleClick = () => {
     logout();
