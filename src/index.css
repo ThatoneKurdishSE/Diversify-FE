@@ -9,7 +9,7 @@
     .insrt-data {
         @apply w-full p-2 text-base border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4;
     }
-    .com-li {
+    /* .com-li {
         @apply ;
-    }
+    } */
   }
