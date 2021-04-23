@@ -2,6 +2,24 @@
 import React from "react";
 
 export default function Navbar({ community , currentUser, navbarOpen}) {
+  const baseUrl = "http://localhost:3000"
+  const join = () => {
+    const communityId = community.id
+    const userId = currentUser.id
+
+    fetch(`${baseUrl}/user_communities`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userId, communityId)
+    })
+    .then((response) => {
+      response.json();
+      console.log(response);
+    })
+   
   const joinButton = () => {
     return (
       <li className="nav-item">
