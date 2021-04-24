@@ -94,6 +94,111 @@
         justify-between
         px-2
         py-3;
+    }
+    .c-navbar-container {
+        @apply container
+        px-4
+        mx-auto
+        flex
+        flex-wrap
+        items-center
+        justify-between;
+    }
+    .community-menu-item {
+        @apply  px-3
+        py-2
+        flex
+        items-center
+        text-xs
+        font-bold
+        leading-snug
+        hover:opacity-80
+        text-white;
+    }
+    .community-title {
+        @apply text-base
+        font-bold
+        leading-relaxed
+        inline-block
+        mr-4
+        py-2
+        whitespace-nowrap
+        text-white;
+    }
 
+    .menu-item-container {
+        @apply flex
+        flex-col
+        lg:flex-row
+        list-none
+        lg:ml-auto;
+    }
+
+    .join-leave {
+        @apply px-3
+        py-2
+        flex
+        items-center
+        text-xs
+        font-bold
+        leading-snug
+        hover:opacity-80
+        text-white;
+    }
+
+    .wrapper{
+        @apply overflow-hidden
+        w-28
+        h-8;
+    }
+
+    .joined, .leave {
+        @apply items-center;
+    }
+
+    .joined:hover{
+        @apply -mt-10;
+    }
+
+    .joined-btn{
+        @apply bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex;
+    }
+
+    .leave {
+        @apply mt-2;
+    }
+
+    .leave-btn {
+        @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full inline-flex;
+    }
+
+    .join-btn {
+        @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex;
+    }
+
+    .create-community-data {
+        @apply text-base border rounded-md w-3/4 p-1 mb-4 transition duration-150 ease-in-out;
+    }
+
+    .btn-green {
+        @apply bg-green-700 hover:bg-green-500 w-48 py-1 px-2 text-base text-white rounded border border-blue-600 focus:outline-none focus:border-black;
+    }
+
+    .search-bar-container {
+        @apply flex-shrink-0
+        py-4
+        flex
+        flex-row
+        items-center
+        justify-center
+        text-sm
+        sm:flex
+        flex-col;
+    }
+
+    .search-bar {
+        @apply text-base border rounded-md;
     }
   }
+
+  /* w-full p-2 text-base border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 */

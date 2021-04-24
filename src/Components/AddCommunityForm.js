@@ -26,7 +26,7 @@ export default function AddCommunityForm({ addCommunity }) {
             onSubmit={handleSubmit}
         >
             <input 
-                className="border border-black w-3/4 h-8 p-0.5"
+                className="create-community-data"
                 type="text"
                 name="name"
                 value={formData.name}
@@ -34,7 +34,7 @@ export default function AddCommunityForm({ addCommunity }) {
                 onChange={handleChange}
                 />
             <input 
-                className="border border-black w-3/4 h-8 p-0.5"
+                className="create-community-data"
                 type="text"
                 name="location"
                 value={formData.location}
@@ -42,7 +42,7 @@ export default function AddCommunityForm({ addCommunity }) {
                 onChange={handleChange}    
             />
             <input 
-                className="border border-black w-3/4 h-8 p-0.5"
+                className="create-community-data"
                 type="text"
                 name="description"
                 value={formData.description}
@@ -50,7 +50,7 @@ export default function AddCommunityForm({ addCommunity }) {
                 onChange={handleChange}    
             />
             <input 
-                className="w-48 h-8"
+                className="btn-green"
                 type="submit"
                 value="Create"
             />
