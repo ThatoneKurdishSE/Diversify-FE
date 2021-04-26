@@ -83,7 +83,7 @@
         justify-center;
     }
     .main-page-container {
-        @apply md:flex flex-col md:flex-row md:h-screen md:min-w-full pl-5 pt-3 ;
+        @apply md:flex flex-col md:flex-row md:h-screen md:min-h-full md:min-w-full pl-5 pt-3 mb-8 ;
     }
     .community-navbar {
         @apply bg-gray-700

@@ -99,7 +99,7 @@ export default function Navbar({ community , currentUser, navbarOpen}) {
               <li className="nav-item">
                 <a className="community-menu-item" href="#">
                   <span className="ml-2">
-                    View All Members(Modal)
+                    View All Members
                   </span>
                 </a>
               </li>
