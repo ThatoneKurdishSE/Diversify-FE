@@ -38,7 +38,7 @@ function App() {
           getCommunities();
         });
     }
-  }, [isLoggedIn,]);
+  }, [isLoggedIn]);
 
   const getPosts = () => {
     if (localStorage.token !== undefined) {
@@ -87,7 +87,6 @@ function App() {
           getGeolocationDetails();
         }
       })
-      .then(() => {})
       .then(() => history.push("/user"));
   };
 
@@ -108,7 +107,6 @@ function App() {
     })
       .then((response) => {
         response.json();
-        console.log(response);
       })
       .then(() => history.push("/"));
   };
@@ -174,6 +172,7 @@ function App() {
               communities={communities}
               setCommunities={setCommunities}
               addCommunity={addCommunity}
+              getCommunities={getCommunities}
             />
           </PrivateRoute>
         </Switch>

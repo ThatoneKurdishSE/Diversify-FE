@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SideBar from "./SideBar";
 import NavBar from "../Components/NavBar";
 import ChatBox from "../Components/ChatBox";
@@ -12,7 +12,7 @@ export default function MainPage({
   addPost,
   communities,
   setCommunities,
-  addCommunity
+  addCommunity,
 }) {
   const [community, setCommunity] = useState(null);
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -31,6 +31,7 @@ export default function MainPage({
         <NavBar
           community={community} 
           navbarOpen={navbarOpen}
+          currentUser={currentUser}
         />
         {community ? (
           <CommunityPosts posts={posts} community={community} />

@@ -12,6 +12,9 @@ export default function Header({ logout }) {
         flex-wrap
         bg-teal
         p-6
+        border-b-2
+        border-blue-200
+        shadow
       ">
       <div
         className="

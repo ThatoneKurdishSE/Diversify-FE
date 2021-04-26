@@ -1,11 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-export default function Navbar({ community , currentUser, navbarOpen}) {
+export default function Navbar({ community , currentUser, navbarOpen }) {
   const baseUrl = "http://localhost:3000"
   const join = () => {
     const communityId = community.id
     const userId = currentUser.id
+    const newUserCommunity = {
+      user_id: userId,
+      community_id: communityId
+    }
 
     fetch(`${baseUrl}/user_communities`, {
       method: "POST",
@@ -13,14 +17,11 @@ export default function Navbar({ community , currentUser, navbarOpen}) {
         Authorization: `Bearer ${localStorage.token}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(userId, communityId)
+      body: JSON.stringify(newUserCommunity)
     })
-    .then((response) => {
-      response.json();
-      console.log(response);
-    })
+    .then(response => response.json())
   }
-   
+
   const joinButton = () => {
     return (
       <li className="nav-item">
@@ -29,7 +30,7 @@ export default function Navbar({ community , currentUser, navbarOpen}) {
           href="#"
         >
         <div className="w-28 h-8 items-center">
-          <button className="join-btn">
+          <button className="join-btn" onClick={join}>
           <span className="pl-1">Join</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -73,7 +74,8 @@ export default function Navbar({ community , currentUser, navbarOpen}) {
 
   const handleCommunityMembership = () => {
     return (
-      leaveButton()
+      joinButton()
+      // leaveButton()
     )
   }
 
@@ -99,7 +101,7 @@ export default function Navbar({ community , currentUser, navbarOpen}) {
               <li className="nav-item">
                 <a className="community-menu-item" href="#">
                   <span className="ml-2">
-                    View All Members(Modal)
+                    View All Members
                   </span>
                 </a>
               </li>
