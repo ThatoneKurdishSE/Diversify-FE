@@ -14,6 +14,14 @@ Supporting and building great connections and hobbies for everyone!
 
 ## General Info
 
+- Project was completed as part of the Flatiron School "Nurturing Difference" hackathon from 04/19/2021 - 04/26/2021
+- Trello was used for for Project Tracking
+- Miro was used for create a visual representation of what an ideal final product would look like as a React SPA 
+- Overall a great learning experience for creating & managaging teams, working with the Git VCS, & learning GitHub project management capabilities
+
+## Goal
+
+- Create a safe space for people in marginalized or underrepresented communities,  particularly communities that are traditionally white-dominated
 
 ## Video
 
@@ -35,12 +43,14 @@ MVP Achieved.
 
 - JavaScript
 - React Router
-- Ruby on Rails
 - Tailwind
 - JSONWebTokens
 
 ## Challenges
 
+- React Hooks (an endless UseEffect hook or two)
+- Scoping a minimum viable product in comparison to our desire outcome (with respect to our time constraints)
+- Retrieving location data from different machines caused some issues which need to be addressed before scaling up
 
 ## Contact
 
@@ -61,5 +71,3 @@ MVP Achieved.
 - Stephen Galvan
   - [LinkedIn](https://www.linkedin.com/in/stephen-galvan-3288a416b/)
   - [GitHub](https://github.com/afrolambo)
-
-
