@@ -9,9 +9,9 @@ Supporting and building great connections and hobbies for everyone!
 - Video
 - Features
 - Status
+- Technologies
 - Challenges
 - Contact
-- Technologies
 
 ## General Info
 
@@ -45,6 +45,7 @@ Supporting and building great connections and hobbies for everyone!
 - JavaScript
 - React Router
 - Tailwind
+- Geolocation-DB API
 - JSONWebTokens
 
 ## Challenges
