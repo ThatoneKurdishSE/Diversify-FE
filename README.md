@@ -5,6 +5,7 @@ Supporting and building great connections and hobbies for everyone!
 ## Table of Contents
 
 - General Info
+- Project Goal
 - Video
 - Features
 - Status
@@ -19,7 +20,7 @@ Supporting and building great connections and hobbies for everyone!
 - Miro was used for create a visual representation of what an ideal final product would look like as a React SPA 
 - Overall a great learning experience for creating & managaging teams, working with the Git VCS, & learning GitHub project management capabilities
 
-## Goal
+## Project Goal
 
 - Create a safe space for people in marginalized or underrepresented communities,  particularly communities that are traditionally white-dominated
 
@@ -37,7 +38,7 @@ Supporting and building great connections and hobbies for everyone!
 
 ## Status
 
-MVP Achieved. 
+- MVP achieved, hoping to circle back in the future in order to further flesh out features & expand capabilities
 
 ## Technologies
 
