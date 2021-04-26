@@ -4,7 +4,6 @@ const CommunitiesListItem = ({community, setCommunity, setNavbarOpen}) => {
     let handleClick = () => {
         setCommunity(community)
         setNavbarOpen(true)
-        console.log(community)
     } 
     return (
         <button
