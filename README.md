@@ -1,4 +1,4 @@
-# Diversify
+# Diversify - Frontend
 
 Supporting and building great connections and hobbies for everyone!
 
@@ -13,7 +13,6 @@ Supporting and building great connections and hobbies for everyone!
 - Technologies
 
 ## General Info
-
 
 
 ## Video
@@ -46,17 +45,21 @@ MVP Achieved.
 ## Contact
 
 - Jeff Golden
-  - [Website](https://personal-website-a0c78.web.app/)
-  - [Jeff Golden](https://www.linkedin.com/in/gjeffgolden/)
+  - [Portfolio Website](https://personal-website-a0c78.web.app/)
+  - [LinkedIn](https://www.linkedin.com/in/gjeffgolden/)
+  - [GitHub](https://github.com/gjeffgolden)
 
 - Jack Hubert
-  - [Jack Hubert](https://www.linkedin.com/in/jackhubert/)
+  - [LinkedIn](https://www.linkedin.com/in/jackhubert/)
+  - [GitHub](https://github.com/hydroflux)
 
 - Ryan Choe
-  - [ryanachoe.com](https://ryanachoe.com/)
-  - [Ryan Choe](https://www.linkedin.com/in/ryanchoe1229/)
+  - [Portfolio Website](https://ryanachoe.com/)
+  - [LinkedIn](https://www.linkedin.com/in/ryanchoe1229/)
+  - [GitHub](https://github.com/rchoe1229)
 
 - Stephen Galvan
-  - [Stephen Galvan](https://www.linkedin.com/in/stephen-galvan-3288a416b/)
+  - [LinkedIn](https://www.linkedin.com/in/stephen-galvan-3288a416b/)
+  - [GitHub](https://github.com/afrolambo)
 
 
