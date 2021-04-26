@@ -49,8 +49,8 @@ MVP Achieved.
   - [Website](https://personal-website-a0c78.web.app/)
   - [Jeff Golden](https://www.linkedin.com/in/gjeffgolden/)
 
-- John Hubert
-  - [John Hubert](https://www.linkedin.com/in/jackhubert/)
+- Jack Hubert
+  - [Jack Hubert](https://www.linkedin.com/in/jackhubert/)
 
 - Ryan Choe
   - [ryanachoe.com](https://ryanachoe.com/)
